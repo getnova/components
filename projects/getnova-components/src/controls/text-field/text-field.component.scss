@@ -1,0 +1,64 @@
+@import "../../scss/variables";
+
+$padding: $cube * 10;
+$padding-top: $cube * 20;
+$border-width: $cube * 2;
+
+:host {
+  display: flex;
+
+  & > ::ng-deep label {
+    position: absolute;
+    transform: translateX($padding + $border-width) translateY($cube * 4) scale(0.8);
+    transform-origin: left;
+    transition: transform $transition, color $transition;
+
+    user-select: none;
+    cursor: text;
+  }
+
+  & > ::ng-deep [novaTextFieldRef] {
+    outline: none;
+    box-shadow: none;
+    border: $border-width solid transparent;
+    border-radius: $cube * 5;
+    transition: border-color $transition, color $transition;
+
+    padding: $padding-top $padding $padding;
+    background-color: $secondary;
+
+    &[type=number] {
+      -moz-appearance: textfield;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+  }
+
+  &.empty:not(:focus-within) > ::ng-deep [novaTextFieldRef]:not(:invalid) {
+    color: transparent;
+
+    & + ::ng-deep label {
+      transform: translateX($padding + $border-width) translateY(($padding-top + $padding + $border-width * 2) / 2);
+    }
+  }
+
+  &:focus-within {
+    & > ::ng-deep label, & > ::ng-deep [novaTextFieldRef] {
+      border-color: $primary;
+    }
+
+    &.error > ::ng-deep [novaTextFieldRef], & > ::ng-deep [novaTextFieldRef]:invalid {
+      border-color: $red-dark;
+    }
+  }
+
+  &.error > ::ng-deep [novaTextFieldRef], & > ::ng-deep [novaTextFieldRef]:invalid {
+    &, & + ::ng-deep label {
+      color: $red-dark;
+    }
+  }
+}

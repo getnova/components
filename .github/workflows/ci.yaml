@@ -1,0 +1,131 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+    tags: [ 'v*' ]
+  pull_request:
+
+jobs:
+
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - run: npm ci
+
+      - run: npm run lint
+
+  test:
+    runs-on: ubuntu-latest
+    if: false
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - run: npm ci
+
+      - run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadless
+
+  build:
+    needs: [ lint ] #test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - run: npm ci
+
+      - run: npm run build:ci
+
+      - name: Update version
+        working-directory: dist/getnova-components
+        run: |
+          version=${GITHUB_REF/refs\/tags\//}
+          if [[ ${version} != "" && ${version:0:1} == "v" ]]; then
+            npm version --no-git-tag-version ${version:1}
+          fi
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: getnova-components
+          path: dist/getnova-components
+
+  publish-npm:
+    needs: [ build ]
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+
+    steps:
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          scope: ${{ github.repository_owner }}
+          registry-url: https://registry.npmjs.org/
+
+      - uses: actions/download-artifact@v2
+        with:
+          name: getnova-components
+          path: getnova-components
+
+      - run: npm publish --access public
+        working-directory: getnova-components
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  publish-gpr:
+    needs: [ build ]
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+
+    steps:
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          scope: ${{ github.repository_owner }}
+          registry-url: https://npm.pkg.github.com
+
+      - uses: actions/download-artifact@v2
+        with:
+          name: getnova-components
+          path: getnova-components
+
+      - run: npm publish
+        working-directory: getnova-components
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

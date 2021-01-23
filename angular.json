@@ -1,0 +1,164 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "getnova-components": {
+      "projectType": "library",
+      "root": "projects/getnova-components",
+      "sourceRoot": "projects/getnova-components/src",
+      "prefix": "nova",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/getnova-components/tsconfig.lib.json",
+            "project": "projects/getnova-components/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/getnova-components/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/getnova-components/src/test.ts",
+            "tsConfig": "projects/getnova-components/tsconfig.spec.json",
+            "karmaConfig": "projects/getnova-components/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/getnova-components/**/*.ts",
+              "projects/getnova-components/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "nova-test": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/nova-test",
+      "sourceRoot": "projects/nova-test/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/nova-test",
+            "index": "projects/nova-test/src/index.html",
+            "main": "projects/nova-test/src/main.ts",
+            "polyfills": "projects/nova-test/src/polyfills.ts",
+            "tsConfig": "projects/nova-test/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/nova-test/src/favicon.ico",
+              "projects/nova-test/src/assets"
+            ],
+            "styles": [
+              "projects/nova-test/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/nova-test/src/environments/environment.ts",
+                  "with": "projects/nova-test/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "nova-test:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "nova-test:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "nova-test:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/nova-test/src/test.ts",
+            "polyfills": "projects/nova-test/src/polyfills.ts",
+            "tsConfig": "projects/nova-test/tsconfig.spec.json",
+            "karmaConfig": "projects/nova-test/karma.conf.js",
+            "assets": [
+              "projects/nova-test/src/favicon.ico",
+              "projects/nova-test/src/assets"
+            ],
+            "styles": [
+              "projects/nova-test/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/nova-test/**/*.ts",
+              "projects/nova-test/**/*.html"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/nova-test/e2e/protractor.conf.js",
+            "devServerTarget": "nova-test:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "nova-test:serve:production"
+            }
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  },
+  "defaultProject": "nova-test"
+}

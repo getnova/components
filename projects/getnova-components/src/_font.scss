@@ -1,0 +1,28 @@
+@import "~@fontsource/jost/400.css";
+@import "~@fontsource/jost/400-italic.css";
+
+@import "~@fontsource/jost/600.css";
+@import "~@fontsource/jost/600-italic.css";
+
+@import "~@fontsource/jost/variable.css";
+@import "~@fontsource/jost/variable-italic.css";
+
+$alternative-font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+h1, h2, h3, h4, h5, h6, strong, b, html, body, button, input, label, optgroup, select, textarea, p, a, span, div {
+  font-family: Jost, $alternative-font;
+  font-weight: 400;
+
+  @supports (font-variation-settings: normal) {
+    font-family: JostVariable, $alternative-font;
+    font-variation-settings: "wght" 400;
+  }
+}
+
+html, button, input, label, optgroup, select, textarea, p, a, span, div {
+  font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6, strong, b {
+  font-weight: 600;
+}

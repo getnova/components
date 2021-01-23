@@ -1,0 +1,30 @@
+@import "../../scss/variables";
+
+$padding-top: $cube * 5;
+$padding-side: $cube * 10;
+$border-width: $cube * 2;
+
+:host {
+  & > ::ng-deep [novaButtonRef] {
+    outline: none;
+    box-shadow: none;
+    border: $border-width solid transparent;
+    border-radius: $cube * 5;
+    transition: border-color $transition, color $transition;
+
+    padding: $padding-top $padding-side;
+
+    user-select: none;
+    cursor: pointer;
+
+    background-color: $primary;
+  }
+
+  &.warning > ::ng-deep [novaButtonRef] {
+    background-color: $warning;
+  }
+
+  &.danger > ::ng-deep [novaButtonRef] {
+    background-color: $danger;
+  }
+}

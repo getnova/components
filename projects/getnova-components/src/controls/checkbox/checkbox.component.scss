@@ -1,0 +1,38 @@
+@import "../../scss/variables";
+
+:host {
+  // TODO: tmp
+  width: 100px;
+
+  ::ng-deep label {
+    display: flex;
+    flex-direction: row;
+    user-select: none;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: $cube * 10;
+
+    &::after {
+      outline: none;
+      box-shadow: none;
+      border: $cube * 5 solid $secondary;
+      border-radius: $cube * 5;
+
+      width: $cube * 10;
+      height: $cube * 10;
+
+      //padding: $cube * 5;
+      background-color: $secondary;
+      content: '';
+    }
+  }
+
+  ::ng-deep [novaCheckboxRef] {
+    display: none;
+
+    &:checked + ::ng-deep label::after {
+      background-color: $primary;
+    }
+  }
+}

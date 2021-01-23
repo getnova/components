@@ -1,0 +1,13 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/getnova-components",
+  "lib": {
+    "entryFile": "src/public-api.ts"
+  },
+  "assets": [
+    "src/_style.scss",
+    "src/_font.scss",
+    "src/_base.scss",
+    "src/scss"
+  ]
+}

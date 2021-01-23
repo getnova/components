@@ -1,0 +1,26 @@
+@import "scss/color-values";
+@import "scss/variables";
+
+// background: #cc3d00 radial-gradient(circle at 60% 100%,#ffa436 5%,#cc3d00 94%);
+
+* {
+  padding: 0;
+  margin: 0;
+
+  &, &::before, &::after {
+    box-sizing: inherit;
+  }
+}
+
+::selection {
+  color: $secondary;
+  background-color: $primary-dark;
+}
+
+button, input, label, optgroup, select, textarea, p, a, span, div {
+  font-size: $text-font-size;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: $title-font-size;
+}
