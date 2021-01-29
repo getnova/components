@@ -1,4 +1,4 @@
-import { ButtonRefDirective } from './button-ref.directive';
+import {ButtonRefDirective} from './button-ref.directive';
 
 describe('ButtonRefDirective', () => {
   it('should create an instance', () => {
