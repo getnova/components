@@ -1,13 +1,13 @@
 @import "colors";
 
 /* Sizes */
-$cube: 0.0625rem; // 1 / 16;
+$cube: 0.0625rem !default; // 1 / 16;
 
-$bp-xs: 0;
-$bp-sm: 576px;
-$bp-md: 768px;
-$bp-lg: 992px;
-$bp-xl: 1200px;
+$bp-xs: 0 !default;
+$bp-sm: 576px !default;
+$bp-md: 768px !default;
+$bp-lg: 992px !default;
+$bp-xl: 1200px !default;
 
 $breakpoints: (
   "xs": $bp-xs,
@@ -15,35 +15,19 @@ $breakpoints: (
   "md": $bp-md,
   "lg": $bp-lg,
   "xl": $bp-xl
-);
+) !default;
 
 /* Fonts */
-$font-family-mono: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$font-family-mono: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 
-$title-font-size: $cube * 20;
-$text-font-size: $cube * 18;
+$title-font-size: $cube * 20 !default;
+$text-font-size: $cube * 18 !default;
 
 /* Other Stuff */
-$box-shadow: 0 0 $cube * 0.8 rgba(0, 0, 0, 0.5);
-$light-box-shadow: 0 0 $cube * 0.4 rgba(0, 0, 0, 0.25);
-$box-radius: $cube * 0.4;
-$transition-time-slow: 250ms;
-$transition-time-fast: 200ms;
-$transition: $transition-time-slow ease-in-out;
-$transition-type-bounce: cubic-bezier(0.2, 0, 0.13, 1.5);
-
-/* Main Colors */
-//$primary: $orange;
-//$primary-dark: darken($orange-dark, 10%);
-//$primary-light: $orange-light;
-//$secondary: $bright;
-//$secondary-dark: darken($bright, 5%);
-//
-///* Other Colors */
-//$background-color: $primary;
-//$text-color: $gray;
-//$light-text-color: $bright;
-//
-///* Selection Colors */
-//$selection-bg: $primary;
-//$selection-fg: $secondary;
+$box-shadow: 0 0 $cube * 0.8 rgba(0, 0, 0, 0.5) !default;
+$light-box-shadow: 0 0 $cube * 0.4 rgba(0, 0, 0, 0.25) !default;
+$box-radius: $cube * 0.4 !default;
+$transition-time-slow: 250ms !default;
+$transition-time-fast: 200ms !default;
+$transition: $transition-time-slow ease-in-out !default;
+$transition-type-bounce: cubic-bezier(0.2, 0, 0.13, 1.5) !default;
