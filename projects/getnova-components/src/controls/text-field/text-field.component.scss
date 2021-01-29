@@ -27,6 +27,7 @@ $border-width: $cube * 2;
     transition: border-color $transition, color $transition;
 
     padding: $padding-top $padding $padding;
+    margin-bottom: $cube * 1;
     background-color: $secondary;
 
     &[type=number] {
