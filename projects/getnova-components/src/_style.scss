@@ -21,6 +21,26 @@ button, input, label, optgroup, select, textarea, p, a, span, div {
   font-size: $text-font-size;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-size: $title-font-size;
+h1 {
+  font-size: $title-font-size * 1.8;
+}
+
+h2 {
+  font-size: $title-font-size * 1.5;
+}
+
+h3 {
+  font-size: $title-font-size * 1.2;
+}
+
+h4 {
+  font-size: $title-font-size * 1;
+}
+
+h5 {
+  font-size: $title-font-size * 0.8;
+}
+
+h6 {
+  font-size: $title-font-size * 0.5;
 }
