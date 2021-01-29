@@ -31,7 +31,6 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
-    if: false
 
     steps:
       - uses: actions/checkout@v2
@@ -52,7 +51,7 @@ jobs:
       - run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadless
 
   build:
-    needs: [ lint ] #test
+    needs: [ lint, test ]
     runs-on: ubuntu-latest
 
     steps:
