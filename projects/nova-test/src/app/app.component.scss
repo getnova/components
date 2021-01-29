@@ -8,9 +8,7 @@
     display: flex;
     flex-direction: row;
 
-    & > *:not(:first-child) {
-      margin-left: $cube  * 10;
-    }
+    gap: $cube * 12;
   }
 
   span.m {
