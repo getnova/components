@@ -4,7 +4,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import {ControlsModule} from 'getnova-components';
+import {NovaControlsModule} from 'getnova-components';
 
 @NgModule({
   declarations: [
@@ -13,7 +13,7 @@ import {ControlsModule} from 'getnova-components';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ControlsModule,
+    NovaControlsModule,
     ReactiveFormsModule
   ],
   providers: [],

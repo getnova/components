@@ -30,5 +30,5 @@ import {ButtonRefDirective} from './button/button-ref.directive';
     ButtonRefDirective
   ]
 })
-export class ControlsModule {
+export class NovaControlsModule {
 }
