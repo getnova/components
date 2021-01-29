@@ -5,7 +5,11 @@ $padding-side: $cube * 10;
 $border-width: $cube * 2;
 
 :host {
+  display: flex;
+  width: 100%;
+
   & > ::ng-deep [novaButtonRef] {
+    width: 100%;
     outline: none;
     box-shadow: none;
     border: $border-width solid transparent;
