@@ -6,6 +6,7 @@ $border-width: $cube * 2;
 
 :host {
   display: flex;
+  width: 100%;
 
   & > ::ng-deep label {
     position: absolute;
@@ -18,6 +19,7 @@ $border-width: $cube * 2;
   }
 
   & > ::ng-deep [novaTextFieldRef] {
+    width: 100%;
     outline: none;
     box-shadow: none;
     border: $border-width solid transparent;
