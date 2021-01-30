@@ -152,7 +152,7 @@ jobs:
   deploy-docs:
     needs: [ build ]
     runs-on: ubuntu-latest
-    if: ${{ github.event_name }} != "pull_request"
+    if: ${{ github.event_name != 'pull_request' }}
 
     environment:
       name: github-pages
