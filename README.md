@@ -13,6 +13,9 @@ To install it from npm, just run:
 npm i @getnova/components
 ```
 
+## Documentation
+You can find the documentation here [getnova.github.io/components](https://getnova.github.io/components).
+
 ## Development server
 
 Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you

@@ -149,6 +149,44 @@ jobs:
           name: ${{ matrix.project }}
           path: dist/${{ matrix.project }}
 
+  deploy-docs:
+    needs: [ build ]
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name }} != "pull_request"
+
+    environment:
+      name: github-pages
+      url: https://getnova.github.io/components
+
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: docs
+          path: docs
+
+      - run: touch docs/.nojekyll
+
+      - uses: SteveSandersonMS/ghaction-rewrite-base-href@v1
+        with:
+          html_path: 'docs/index.html'
+          base_href: '/components/'
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPOSITORY_NAME: ${{ github.repository }}
+          BRANCH: gh-pages
+          FOLDER: docs
+          # TARGET_FOLDER: ${{ steps.prepare_deploy.outputs.folder }}
+          # CLEAN_EXCLUDE: ${{ steps.prepare_deploy.outputs.clean_exclude }}
+          CLEAN: true
+
+          # https://github.com/crazy-max/ghaction-github-pages/blob/dev/src/git.ts#L3-L8
+          COMMIT_MESSAGE: Deploy to GitHub pages
+          GIT_CONFIG_NAME: github-actions[bot]
+          GIT_CONFIG_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+
   publish-npm:
     needs: [ build-components ]
     runs-on: ubuntu-latest
