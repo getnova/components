@@ -1,5 +1,7 @@
-import {Component, ContentChild, HostBinding, HostListener, Input} from '@angular/core';
+import {Component, ContentChild, ContentChildren, HostBinding, HostListener, QueryList} from '@angular/core';
 import {TextFieldRefDirective} from './text-field-ref.directive';
+import {FormControlDirective} from '@angular/forms';
+import {TextFieldErrorDirective} from './text-field-error.directive';
 
 @Component({
   selector: 'nova-text-field',
@@ -8,12 +10,14 @@ import {TextFieldRefDirective} from './text-field-ref.directive';
 })
 export class TextFieldComponent {
 
-  @Input()
-  @HostBinding('class.error')
-  public error = false;
-
   @ContentChild(TextFieldRefDirective)
-  public inputRef?: TextFieldRefDirective;
+  public readonly inputRef?: TextFieldRefDirective;
+
+  @ContentChild(FormControlDirective)
+  public readonly control?: FormControlDirective;
+
+  @ContentChildren(TextFieldErrorDirective)
+  private readonly errors?: QueryList<TextFieldErrorDirective>;
 
   get value(): string | undefined {
     return this.inputRef?.value;
@@ -22,6 +26,15 @@ export class TextFieldComponent {
   @HostBinding('class.empty')
   get empty(): boolean {
     return !this.value;
+  }
+
+  @HostBinding('class.error')
+  get error(): boolean {
+    if (this.control) {
+      this.errors?.forEach(error => error.update(this.control?.control));
+    }
+
+    return !this.control?.valid && Boolean(this.control?.touched);
   }
 
   @HostListener('click')

@@ -5,7 +5,7 @@
     <scripts>
       <script value="build" />
     </scripts>
-    <arguments value="-- --prod nova-test" />
+    <arguments value="-- --prod playground" />
     <node-interpreter value="project" />
     <envs />
     <method v="2" />

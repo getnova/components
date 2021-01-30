@@ -5,7 +5,7 @@
     <scripts>
       <script value="start" />
     </scripts>
-    <arguments value="-- nova-test" />
+    <arguments value="-- playground" />
     <node-interpreter value="project" />
     <envs />
 (components)    <method v="2" />
