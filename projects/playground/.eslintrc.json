@@ -10,9 +10,9 @@
       ],
       "parserOptions": {
         "project": [
-          "projects/nova-test/tsconfig.app.json",
-          "projects/nova-test/tsconfig.spec.json",
-          "projects/nova-test/e2e/tsconfig.json"
+          "projects/playground/tsconfig.app.json",
+          "projects/playground/tsconfig.spec.json",
+          "projects/playground/e2e/tsconfig.json"
         ],
         "createDefaultProgram": true
       },
