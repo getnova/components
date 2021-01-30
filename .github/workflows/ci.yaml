@@ -32,6 +32,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        project: [ getnova-components, playground, docs ]
+
     steps:
       - uses: actions/checkout@v2
 
@@ -48,9 +52,9 @@ jobs:
 
       - run: npm ci
 
-      - run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadless
+      - run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadless ${{ matrix.project }}
 
-  build:
+  build-components:
     needs: [ lint, test ]
     runs-on: ubuntu-latest
 
@@ -70,7 +74,7 @@ jobs:
 
       - run: npm ci
 
-      - run: npm run build:ci
+      - run: npm run build:ci getnova-components
 
       - name: Update version
         working-directory: dist/getnova-components
@@ -82,11 +86,42 @@ jobs:
 
       - uses: actions/upload-artifact@v2
         with:
-          name: getnova-components
+          name: components
           path: dist/getnova-components
 
+  build:
+    needs: [ build-components ]
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        project: [ playground, docs ]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - run: npm ci
+
+      - run: npm run build:ci ${{ matrix.project }}
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: ${{ matrix.project }}
+          path: dist/${{ matrix.project }}
+
   publish-npm:
-    needs: [ build ]
+    needs: [ build-components ]
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/v')
 
@@ -100,15 +135,15 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: getnova-components
-          path: getnova-components
+          path: components
 
       - run: npm publish --access public
-        working-directory: getnova-components
+        working-directory: components
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   publish-gpr:
-    needs: [ build ]
+    needs: [ build-components ]
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/v')
 
@@ -122,9 +157,9 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: getnova-components
-          path: getnova-components
+          path: components
 
       - run: npm publish
-        working-directory: getnova-components
+        working-directory: components
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
