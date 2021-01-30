@@ -7,12 +7,15 @@
 <div class="row">
   <nova-text-field>
     <label for="name">Name</label>
-    <input id="name" novaTextFieldRef type="text">
+    <input [formControl]="control" id="name" novaTextFieldRef type="text">
+    <span novaTextFieldError="required">This field is required!</span>
+    <span novaTextFieldError="pattern">This must be a number!</span>
   </nova-text-field>
 
   <nova-text-field>
     <label for="age">Age</label>
     <input id="age" min="0" novaTextFieldRef type="number">
+    <span novaTextFieldError="test">This must be a number!</span>
   </nova-text-field>
 
   <nova-text-field>
@@ -53,5 +56,8 @@
   </nova-button>
   <nova-button type="danger">
     <button novaButtonRef>Button</button>
+  </nova-button>
+  <nova-button type="danger">
+    <button disabled novaButtonRef>Button</button>
   </nova-button>
 </div>
