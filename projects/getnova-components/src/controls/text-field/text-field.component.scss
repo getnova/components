@@ -6,9 +6,10 @@ $border-width: $cube * 2;
 
 :host {
   display: flex;
+  flex-direction: column;
   width: 100%;
 
-  & > ::ng-deep label {
+  > ::ng-deep label {
     position: absolute;
     transform: translateX($padding + $border-width) translateY($cube * 4) scale(0.8);
     transform-origin: left;
@@ -18,8 +19,8 @@ $border-width: $cube * 2;
     cursor: text;
   }
 
-  & > ::ng-deep [novaTextFieldRef] {
-    width: 100%;
+  > ::ng-deep [novaTextFieldRef] {
+    width: calc(100% - #{$padding * 2});
     outline: none;
     box-shadow: none;
     border: $border-width solid transparent;
@@ -41,27 +42,29 @@ $border-width: $cube * 2;
     }
   }
 
-  &.empty:not(:focus-within) > ::ng-deep [novaTextFieldRef]:not(:invalid) {
+  > ::ng-deep [novaTextFieldError] {
+    color: $red;
+  }
+
+  &.empty > ::ng-deep [novaTextFieldRef]:not(:focus):not(:invalid) {
     color: transparent;
 
-    & + ::ng-deep label {
+    + ::ng-deep label {
       transform: translateX($padding + $border-width) translateY(($padding-top + $padding + $border-width * 2) / 2);
     }
   }
 
-  &:focus-within {
-    & > ::ng-deep label, & > ::ng-deep [novaTextFieldRef] {
-      border-color: $primary;
-    }
-
-    &.error > ::ng-deep [novaTextFieldRef], & > ::ng-deep [novaTextFieldRef]:invalid {
-      border-color: $red-dark;
-    }
+  > ::ng-deep [novaTextFieldRef]:focus {
+    border-color: $primary;
   }
 
-  &.error > ::ng-deep [novaTextFieldRef], & > ::ng-deep [novaTextFieldRef]:invalid {
-    &, & + ::ng-deep label {
-      color: $red-dark;
+  &.error > ::ng-deep [novaTextFieldRef]:focus, > ::ng-deep [novaTextFieldRef]:focus:invalid {
+    border-color: $red-dark;
+  }
+
+  &.error > ::ng-deep [novaTextFieldRef], > ::ng-deep [novaTextFieldRef]:invalid {
+    &, + ::ng-deep label {
+      color: $red;
     }
   }
 }

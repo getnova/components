@@ -6,6 +6,7 @@ import {CheckboxComponent} from './checkbox/checkbox.component';
 import {CheckboxRefDirective} from './checkbox/checkbox-ref.directive';
 import {ButtonComponent} from './button/button.component';
 import {ButtonRefDirective} from './button/button-ref.directive';
+import {TextFieldErrorDirective} from './text-field/text-field-error.directive';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import {ButtonRefDirective} from './button/button-ref.directive';
     // Text Field
     TextFieldComponent,
     TextFieldRefDirective,
+    TextFieldErrorDirective,
     CheckboxComponent,
     CheckboxRefDirective,
     ButtonComponent,
@@ -24,6 +26,7 @@ import {ButtonRefDirective} from './button/button-ref.directive';
     // Text Field
     TextFieldComponent,
     TextFieldRefDirective,
+    TextFieldErrorDirective,
     CheckboxComponent,
     CheckboxRefDirective,
     ButtonComponent,

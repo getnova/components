@@ -54,6 +54,10 @@ jobs:
     needs: [ lint, test ]
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        project: [ getnova-components, playground, docs ]
+
     steps:
       - uses: actions/checkout@v2
 
@@ -70,9 +74,13 @@ jobs:
 
       - run: npm ci
 
-      - run: npm run build:ci
+      - run: npm run build:ci getnova-components
+
+      - run: npm run build:ci ${{ matrix.project }}
+        if: ${{ matrix.project }} != 'getnova-components'
 
       - name: Update version
+        if: ${{ matrix.project }} == 'getnova-components'
         working-directory: dist/getnova-components
         run: |
           version=${GITHUB_REF/refs\/tags\//}
@@ -82,8 +90,8 @@ jobs:
 
       - uses: actions/upload-artifact@v2
         with:
-          name: getnova-components
-          path: dist/getnova-components
+          name: ${{ matrix.project }}
+          path: dist/${{ matrix.project }}
 
   publish-npm:
     needs: [ build ]
@@ -100,10 +108,10 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: getnova-components
-          path: getnova-components
+          path: components
 
       - run: npm publish --access public
-        working-directory: getnova-components
+        working-directory: components
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
@@ -122,9 +130,9 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: getnova-components
-          path: getnova-components
+          path: components
 
       - run: npm publish
-        working-directory: getnova-components
+        working-directory: components
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
