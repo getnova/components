@@ -8,13 +8,13 @@ $border-width: $cube * 2;
   display: flex;
   width: 100%;
 
-  & > ::ng-deep [novaButtonRef] {
+  > ::ng-deep [novaButtonRef] {
     width: 100%;
     outline: none;
     box-shadow: none;
     border: $border-width solid transparent;
     border-radius: $cube * 5;
-    transition: border-color $transition, color $transition;
+    transition: background-color $transition;
 
     padding: $padding-top $padding-side;
 
@@ -22,13 +22,49 @@ $border-width: $cube * 2;
     cursor: pointer;
 
     background-color: $primary;
+
+    &:hover {
+      background-color: $primary-dark;
+    }
+
+    &:active {
+      border-color: $primary;
+    }
   }
 
   &.warning > ::ng-deep [novaButtonRef] {
     background-color: $warning;
+
+    &:hover {
+      background-color: $warning-dark;
+    }
+
+    &:active {
+      border-color: $warning;
+    }
   }
 
   &.danger > ::ng-deep [novaButtonRef] {
     background-color: $danger;
+
+    &:hover {
+      background-color: $danger-dark;
+    }
+
+    &:active {
+      border-color: $danger;
+    }
+  }
+
+  > ::ng-deep [novaButtonRef]:disabled {
+    cursor: not-allowed;
+
+    &, &:hover {
+      background-color: $secondary;
+    }
+
+    &:active {
+      border-color: transparent;
+    }
   }
 }
