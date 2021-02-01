@@ -6,7 +6,7 @@ import {Modal} from "../../../../getnova-components/src/layout";
   templateUrl: './test-modal.component.html',
   styleUrls: ['./test-modal.component.scss']
 })
-export class TestModalComponent extends Modal implements OnDestroy,OnInit {
+export class TestModalComponent extends Modal implements OnDestroy, OnInit {
 
   @Input()
   name?: string = "Loading...";
