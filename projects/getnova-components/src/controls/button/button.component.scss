@@ -32,6 +32,18 @@ $border-width: $cube * 2;
     }
   }
 
+  &.success > ::ng-deep [novaButtonRef] {
+    background-color: $success;
+
+    &:hover {
+      background-color: $success-dark;
+    }
+
+    &:active {
+      border-color: $success;
+    }
+  }
+
   &.warning > ::ng-deep [novaButtonRef] {
     background-color: $warning;
 
