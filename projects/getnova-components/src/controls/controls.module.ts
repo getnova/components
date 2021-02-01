@@ -7,12 +7,10 @@ import {CheckboxRefDirective} from './checkbox/checkbox-ref.directive';
 import {ButtonComponent} from './button/button.component';
 import {ButtonRefDirective} from './button/button-ref.directive';
 import {TextFieldErrorDirective} from './text-field/text-field-error.directive';
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   imports: [
-    CommonModule,
-    BrowserAnimationsModule
+    CommonModule
   ],
   declarations: [
     // Text Field
