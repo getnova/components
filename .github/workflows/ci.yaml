@@ -35,12 +35,8 @@ jobs:
 
       - run: npm run lint
 
-  test:
+  test-components:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        project: [ getnova-components, playground, docs ]
 
     steps:
       - uses: actions/checkout@v2
@@ -64,10 +60,10 @@ jobs:
 
       - run: npm ci
 
-      - run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadless ${{ matrix.project }}
+      - run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadless getnova-components
 
   build-components:
-    needs: [ lint, test ]
+    needs: [ lint, test-components ]
     runs-on: ubuntu-latest
 
     steps:
@@ -107,8 +103,45 @@ jobs:
           name: components
           path: dist/getnova-components
 
-  build:
+  test:
     needs: [ build-components ]
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        project: [ playground, docs ]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Get npm cache directory
+        id: npm-cache-dir
+        run: |
+          echo "::set-output name=dir::$(npm config get cache)"
+
+      - uses: actions/cache@v2
+        id: npm-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
+        with:
+          path: ${{ steps.npm-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - run: npm ci
+
+      - uses: actions/download-artifact@v2
+        with:
+          name: components
+          path: dist/getnova-components
+
+      - run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadless ${{ matrix.project }}
+
+  build:
+    needs: [ test, build-components ]
     runs-on: ubuntu-latest
 
     strategy:
