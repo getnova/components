@@ -9,5 +9,5 @@ export class ButtonComponent {
 
   @Input()
   @HostBinding('className')
-  public type?: 'warning' | 'danger';
+  public type?: 'success' | 'warning' | 'danger';
 }

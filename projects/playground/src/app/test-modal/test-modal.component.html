@@ -1,0 +1,14 @@
+<nova-modal-header title="Test Modal"></nova-modal-header>
+<nova-modal-body>
+  <p>
+    Do you relay want to delete the item "{{name}}"?
+  </p>
+  <div class="row">
+    <nova-button type="danger">
+      <button (click)="close()" novaButtonRef>Cancel</button>
+    </nova-button>
+    <nova-button type="success">
+      <button (click)="close()" novaButtonRef>Save</button>
+    </nova-button>
+  </div>
+</nova-modal-body>
