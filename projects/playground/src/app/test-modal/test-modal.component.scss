@@ -1,0 +1,7 @@
+@import "projects/getnova-components/src/scss/variables";
+
+.row {
+  display: flex;
+  gap: $cube  * 10;
+  margin: $cube * 5 0;
+}

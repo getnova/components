@@ -9,7 +9,7 @@
     <label for="name">Name</label>
     <input [formControl]="control" id="name" novaTextFieldRef type="text">
     <span novaTextFieldError="required">This field is required!</span>
-    <span novaTextFieldError="pattern">This must be a number!</span>
+    <span novaTextFieldError="pattern">This must be a number! (0 - 5)</span>
   </nova-text-field>
 
   <nova-text-field>
@@ -52,7 +52,7 @@
     <input novaButtonRef type="submit" value="Submit">
   </nova-button>
   <nova-button type="warning">
-    <input novaButtonRef type="button" value="Input Button">
+    <input (click)="show()" novaButtonRef type="button" value="Input Button (Open Modal)">
   </nova-button>
   <nova-button type="danger">
     <button novaButtonRef>Button</button>
@@ -61,3 +61,4 @@
     <button disabled novaButtonRef>Button</button>
   </nova-button>
 </div>
+<nova-modal-parent></nova-modal-parent>
