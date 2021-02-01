@@ -1,10 +1,21 @@
 {
   "name": "@getnova/components",
   "version": "0.0.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/getnova/components.git"
+  },
+  "keywords": [
+    "angular",
+    "nova",
+    "components"
+  ],
   "peerDependencies": {
     "@angular/common": "^11.1.0",
     "@angular/core": "^11.1.0",
-    "@angular/forms": "~11.1.0"
+    "@angular/forms": "~11.1.0",
+    "rxjs": "~6.6.0"
   },
   "dependencies": {
     "tslib": "^2.0.0",
