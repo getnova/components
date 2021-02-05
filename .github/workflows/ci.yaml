@@ -197,7 +197,10 @@ jobs:
           name: docs
           path: docs
 
-      - run: touch docs/.nojekyll
+      - name: Prepare Web Root
+        run: |
+          touch docs/.nojekyll
+          cp docs/index.html docs/404.html
 
       - uses: SteveSandersonMS/ghaction-rewrite-base-href@v1
         with:
