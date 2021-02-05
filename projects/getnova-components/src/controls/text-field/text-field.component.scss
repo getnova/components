@@ -20,7 +20,7 @@ $border-width: $cube * 2;
   }
 
   > ::ng-deep [novaTextFieldRef] {
-    width: calc(100% - #{$padding * 2});
+    width: calc(100% - #{$padding * 2 + $border-width * 2});
     outline: none;
     box-shadow: none;
     border: $border-width solid transparent;
