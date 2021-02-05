@@ -12,10 +12,10 @@
     "components"
   ],
   "peerDependencies": {
-    "@angular/animations": "~11.1.0",
-    "@angular/common": "^11.1.0",
-    "@angular/core": "^11.1.0",
-    "@angular/forms": "~11.1.0",
+    "@angular/animations": "~11.1.2",
+    "@angular/common": "~11.1.2",
+    "@angular/core": "~11.1.2",
+    "@angular/forms": "~11.1.2",
     "rxjs": "~6.6.0"
   },
   "dependencies": {
