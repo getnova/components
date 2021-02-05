@@ -1,0 +1,9 @@
+@import "../../../scss/variables";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  border-right: $cube * 1 solid $secondary;
+  padding: $cube * 20;
+  overflow-y: auto;
+}

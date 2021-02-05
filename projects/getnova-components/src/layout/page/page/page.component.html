@@ -1,0 +1,13 @@
+<ng-container *ngIf="navigation">
+  <ng-content select="nova-page-mark"></ng-content>
+  <ng-content select="nova-page-header"></ng-content>
+  <ng-content select="nova-page-aside"></ng-content>
+</ng-container>
+<div class="content">
+  <div class="container">
+    <ng-content select="nova-page-body"></ng-content>
+  </div>
+  <div class="container">
+    <ng-content select="nova-page-footer"></ng-content>
+  </div>
+</div>

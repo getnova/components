@@ -1,0 +1,61 @@
+<p>
+  This is a text field:
+</p>
+
+<div class="row">
+  <nova-text-field>
+    <label for="name">Name</label>
+    <input [formControl]="control" id="name" novaTextFieldRef type="text">
+    <span novaTextFieldError="required">This field is required!</span>
+    <span novaTextFieldError="pattern">This must be a number! (0 - 5)</span>
+  </nova-text-field>
+
+  <nova-text-field>
+    <label for="age">Age</label>
+    <input id="age" min="0" novaTextFieldRef type="number">
+    <span novaTextFieldError="test">This must be a number!</span>
+  </nova-text-field>
+
+  <nova-text-field>
+    <label for="death">Death</label>
+    <input id="death" novaTextFieldRef type="date">
+  </nova-text-field>
+</div>
+
+<div class="row">
+  <span class="m">test!</span>
+  <span class="a">test!</span>
+  <span class="b">test!</span>
+  <span class="c">test!</span>
+  <span class="d">test!</span>
+  <span class="e">test!</span>
+  <span class="f">test!</span>
+  <span class="g">test!</span>
+  <span class="h">test!</span>
+  <span class="i">test!</span>
+  <span class="j">test!</span>
+  <span class="k">test!</span>
+  <span class="l">test!</span>
+</div>
+
+<div class="row">
+  <nova-checkbox>
+    <label for="checkbox">Name</label>
+    <input id="checkbox" novaCheckboxRef type="checkbox">
+  </nova-checkbox>
+</div>
+
+<div class="row">
+  <nova-button>
+    <input novaButtonRef type="submit" value="Submit">
+  </nova-button>
+  <nova-button type="warning">
+    <input (click)="show()" novaButtonRef type="button" value="Input Button (Open Modal)">
+  </nova-button>
+  <nova-button type="danger">
+    <button novaButtonRef>Button</button>
+  </nova-button>
+  <nova-button type="danger">
+    <button disabled novaButtonRef>Button</button>
+  </nova-button>
+</div>

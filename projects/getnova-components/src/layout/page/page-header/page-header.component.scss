@@ -1,0 +1,9 @@
+@import "../../../scss/variables";
+
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: $secondary;
+  padding: 0 $cube * 20;
+}

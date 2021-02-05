@@ -1,5 +1,5 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {Modal} from "../../../../getnova-components/src/layout";
+import {Modal} from "../../../../../getnova-components/src/layout";
 
 @Component({
   selector: 'app-test-modal',

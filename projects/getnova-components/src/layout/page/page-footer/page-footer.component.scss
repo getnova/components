@@ -1,0 +1,10 @@
+@import "../../../scss/variables";
+
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: $footer-height;
+  border-top: $cube * 2 solid $secondary;
+  padding: 0 $cube * 20;
+}

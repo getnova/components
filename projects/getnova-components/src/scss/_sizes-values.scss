@@ -1,0 +1,13 @@
+@import "variables";
+
+$sizes: (
+  "aside-width": $cube * 360,
+  "header-height": $cube * 60,
+  "footer-height": $cube * 50
+) !default;
+
+:root {
+  @each $name, $value in $sizes {
+    --#{$name}: #{$value};
+  }
+}

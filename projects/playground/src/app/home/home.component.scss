@@ -1,0 +1,62 @@
+@import "projects/getnova-components/src/scss/variables";
+
+:host {
+  .row {
+    display: flex;
+    flex-direction: row;
+
+    gap: $cube * 12;
+  }
+
+  span.m {
+    color: $blue;
+  }
+
+  span.a {
+    color: $indigo;
+  }
+
+  span.b {
+    color: $purple;
+  }
+
+  span.c {
+    color: $pink;
+  }
+
+  span.d {
+    color: $red;
+  }
+
+  span.e {
+    color: $orange;
+  }
+
+  span.f {
+    color: $yellow;
+  }
+
+  span.g {
+    color: $green;
+  }
+
+  span.h {
+    color: $teal;
+  }
+
+  span.i {
+    color: $cyan;
+  }
+
+  span.j {
+    color: $white;
+  }
+
+  span.k {
+    color: $gray;
+  }
+
+  span.l {
+    color: $gray-dark;
+  }
+}

@@ -1,0 +1,54 @@
+@import "../../../scss/variables";
+
+:host {
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "content";
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    grid-area: content;
+    overflow-y: auto;
+  }
+
+  &:not(.navigation) .content {
+    align-items: center;
+    justify-content: center;
+    row-gap: $cube * 40;
+    text-align: center;
+  }
+
+  &.navigation {
+    grid-template-columns: $aside-width 6fr;
+    grid-template-rows: $header-height 50fr;
+    grid-template-areas: "mark header"
+                       "aside content";
+
+    ::ng-deep {
+      nova-page-mark {
+        grid-area: mark;
+      }
+
+      nova-page-header {
+        grid-area: header;
+      }
+
+      nova-page-aside {
+        grid-area: aside
+      }
+
+      nova-page-body {
+        display: block;
+      }
+    }
+
+    .content {
+      justify-content: space-between;
+    }
+  }
+}
