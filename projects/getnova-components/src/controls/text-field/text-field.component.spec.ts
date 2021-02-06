@@ -10,7 +10,7 @@ describe('TestFieldComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [TextFieldComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

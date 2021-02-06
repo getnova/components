@@ -10,7 +10,7 @@ export type RawModal = {
 };
 
 export type ModalInputs = { [key: string]: unknown };
-export type ModalOutputs = { [key: string]: () => void };
+export type ModalOutputs = { [key: string]: (event: any) => void };
 
 @Injectable({
   providedIn: 'root'

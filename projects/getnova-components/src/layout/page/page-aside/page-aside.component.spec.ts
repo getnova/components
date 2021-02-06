@@ -10,7 +10,7 @@ describe('PageAsideComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [PageAsideComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

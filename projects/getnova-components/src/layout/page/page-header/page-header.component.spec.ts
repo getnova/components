@@ -10,7 +10,7 @@ describe('PageHeaderComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [PageHeaderComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

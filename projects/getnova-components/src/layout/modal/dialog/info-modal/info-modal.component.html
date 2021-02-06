@@ -1,0 +1,7 @@
+<nova-modal-header [title]="title"></nova-modal-header>
+<nova-modal-body class="body">
+  <p>{{message}}</p>
+  <nova-button (click)="close(); $event.preventDefault()">
+    <button novaButtonRef>Ok</button>
+  </nova-button>
+</nova-modal-body>

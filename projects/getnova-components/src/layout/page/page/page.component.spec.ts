@@ -10,7 +10,7 @@ describe('PageComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [PageComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   // ignore not implemented test

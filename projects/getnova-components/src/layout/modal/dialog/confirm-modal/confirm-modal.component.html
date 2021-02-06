@@ -1,0 +1,12 @@
+<nova-modal-header [title]="title"></nova-modal-header>
+<nova-modal-body class="body">
+  <p>{{message}}</p>
+  <div class="controls">
+    <nova-button (click)="resolve.emit(false); close();$event.preventDefault()">
+      <button novaButtonRef>Cancel</button>
+    </nova-button>
+    <nova-button (click)="resolve.emit(true); close(); $event.preventDefault()" type="danger">
+      <button novaButtonRef>Confirm</button>
+    </nova-button>
+  </div>
+</nova-modal-body>

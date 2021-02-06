@@ -10,7 +10,7 @@ describe('PageFooterComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [PageFooterComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

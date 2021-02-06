@@ -2,6 +2,8 @@ import {Component} from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
 import {ModalService} from "getnova-components";
 import {TestModalComponent} from "./test-modal/test-modal.component";
+import {InfoModalComponent} from "../../../../getnova-components/src/layout/modal/dialog/info-modal/info-modal.component";
+import {ConfirmModalComponent} from "../../../../getnova-components/src/layout/modal/dialog/confirm-modal/confirm-modal.component";
 
 @Component({
   selector: 'app-home',
@@ -19,5 +21,19 @@ export class HomeComponent {
 
   show(): void {
     this.modaleService.show(TestModalComponent, {name: "Network Cable"});
+  }
+
+  dialog(): void {
+    this.modaleService.show(InfoModalComponent, {
+      title: "Some Info",
+      message: 'ERRRRRRRRRRRRRRRRROR'
+    });
+  }
+
+  confirm(): void {
+    this.modaleService.show(ConfirmModalComponent, {
+      title: "Some Info",
+      message: 'ERRRRRRRRRRRRRRRRROR'
+    }, {resolve: data => console.log('Resolve', data)})
   }
 }

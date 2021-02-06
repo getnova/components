@@ -10,10 +10,14 @@ import {PageFooterComponent} from './page/page-footer/page-footer.component';
 import {PageBodyComponent} from './page/page-body/page-body.component';
 import {PageAsideComponent} from './page/page-aside/page-aside.component';
 import {PageMarkComponent} from './page/page-mark/page-mark.component';
+import {ConfirmModalComponent} from './modal/dialog/confirm-modal/confirm-modal.component';
+import {InfoModalComponent} from './modal/dialog/info-modal/info-modal.component';
+import {NovaControlsModule} from "../controls";
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    NovaControlsModule
   ],
   declarations: [
     // Modal
@@ -27,7 +31,9 @@ import {PageMarkComponent} from './page/page-mark/page-mark.component';
     PageFooterComponent,
     PageBodyComponent,
     PageAsideComponent,
-    PageMarkComponent
+    PageMarkComponent,
+    ConfirmModalComponent,
+    InfoModalComponent
   ],
   exports: [
     // Modal

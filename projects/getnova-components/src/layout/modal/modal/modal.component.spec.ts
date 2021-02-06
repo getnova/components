@@ -10,7 +10,7 @@ describe('ModalComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ModalComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   // ignore not implemented test

@@ -1,4 +1,13 @@
-import {Component, ComponentRef, HostListener, Input, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
+import {
+  Component,
+  ComponentRef,
+  EventEmitter,
+  HostListener,
+  Input,
+  OnInit,
+  ViewChild,
+  ViewContainerRef
+} from '@angular/core';
 import {Modal} from "../modal";
 import {RawModal} from "../modal.service";
 
@@ -29,13 +38,8 @@ export class ModalComponent implements OnInit {
     }
     instance.close = this.modal.close;
 
-    // set inputs
     this.setInputs(instance);
-
-    // if(this.modal.outputs)
-    //   for (let output of this.modal.factory.outputs) {
-    //     (instance[output.propName] as EventEmitter<any>).
-    //   }
+    this.setOutputs(instance);
   }
 
   public close(event: Event): void {
@@ -75,6 +79,22 @@ export class ModalComponent implements OnInit {
 
       if (value) {
         modal[input.propName] = value;
+      }
+    }
+  }
+
+  private setOutputs(modal: Record<string, unknown>) {
+    if (!this.modal.outputs) {
+      return;
+    }
+
+    let value: unknown;
+
+    for (let input of this.modal.factory.outputs) {
+      value = this.modal.outputs[input.templateName];
+
+      if (value) {
+        (modal[input.propName] as EventEmitter<any>).subscribe(value);
       }
     }
   }

@@ -10,7 +10,7 @@ describe('PageMarkComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [PageMarkComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
