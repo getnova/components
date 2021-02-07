@@ -1,9 +1,8 @@
 import {Component} from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
-import {ModalService} from "getnova-components";
+import {ModalService, NotificationService, NotificationType} from "getnova-components";
 import {TestModalComponent} from "./test-modal/test-modal.component";
-import {InfoModalComponent} from "../../../../getnova-components/src/layout/modal/dialog/info-modal/info-modal.component";
-import {ConfirmModalComponent} from "../../../../getnova-components/src/layout/modal/dialog/confirm-modal/confirm-modal.component";
+import {ConfirmModalComponent} from "../../../../getnova-components/src/layout/modal/confirm-modal/confirm-modal.component";
 
 @Component({
   selector: 'app-home',
@@ -15,7 +14,8 @@ export class HomeComponent {
   public control = new FormControl('', [Validators.required, Validators.pattern(/^\d$/), Validators.min(0), Validators.max(5)]);
 
   constructor(
-    private readonly modaleService: ModalService
+    private readonly modaleService: ModalService,
+    private readonly notificationService: NotificationService
   ) {
   }
 
@@ -24,10 +24,7 @@ export class HomeComponent {
   }
 
   dialog(): void {
-    this.modaleService.show(InfoModalComponent, {
-      title: "Some Info",
-      message: 'ERRRRRRRRRRRRRRRRROR'
-    });
+    this.notificationService.show('Error', 'Something went extremely wrong!', NotificationType.DANGER);
   }
 
   confirm(): void {

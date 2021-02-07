@@ -1,4 +1,4 @@
-@import "../../../../scss/variables";
+@import "../../../scss/variables";
 
 .body {
   row-gap: $cube * 10;
@@ -6,6 +6,6 @@
   .controls {
     display: flex;
     flex-direction: row;
-    column-gap: $cube * 20;
+    column-gap: $cube * 10;
   }
 }

@@ -2,10 +2,10 @@
 <nova-modal-body class="body">
   <p>{{message}}</p>
   <div class="controls">
-    <nova-button (click)="resolve.emit(false); close();$event.preventDefault()">
+    <nova-button (click)="resolve.emit(false); close();$event.preventDefault()" type="danger">
       <button novaButtonRef>Cancel</button>
     </nova-button>
-    <nova-button (click)="resolve.emit(true); close(); $event.preventDefault()" type="danger">
+    <nova-button (click)="resolve.emit(true); close(); $event.preventDefault()" type="success">
       <button novaButtonRef>Confirm</button>
     </nova-button>
   </div>

@@ -24,7 +24,7 @@
   .modal {
     padding: $cube * 20;
     background-color: $background-color;
-    border-radius: $cube * 5;
+    border-radius: $border-radius;
 
     display: flex;
     flex-direction: column;

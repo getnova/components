@@ -1,0 +1,14 @@
+@import "../../../scss/variables";
+
+$margin: $cube * 20;
+
+:host {
+  position: fixed;
+  right: $margin;
+  bottom: $margin;
+
+  display: flex;
+  flex-direction: column;
+  row-gap: $margin;
+  pointer-events: none;
+}

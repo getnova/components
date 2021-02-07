@@ -1,0 +1,51 @@
+@import "../../../scss/variables";
+
+$border-width: $cube * 4;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  width: $cube * 350;
+  padding: 0 0 $cube * 15;
+
+  background-color: $primary;
+  pointer-events: auto;
+  border-radius: $border-radius;
+  overflow: hidden;
+  box-shadow: $box-shadow;
+
+  h4, p {
+    margin: 0 $cube * 20;
+  }
+
+  .line {
+    height: $border-width;
+    background-color: $primary-dark;
+    margin-bottom: #{$cube * 15 - $border-width};
+    transition: width linear 1s;
+  }
+
+  &.success {
+    background-color: $success;
+
+    .line {
+      background-color: $success-dark;
+    }
+  }
+
+  &.warning {
+    background-color: $warning;
+
+    .line {
+      background-color: $warning-dark;
+    }
+  }
+
+  &.danger {
+    background-color: $danger;
+
+    .line {
+      background-color: $danger-dark;
+    }
+  }
+}

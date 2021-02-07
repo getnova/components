@@ -10,9 +10,10 @@ import {PageFooterComponent} from './page/page-footer/page-footer.component';
 import {PageBodyComponent} from './page/page-body/page-body.component';
 import {PageAsideComponent} from './page/page-aside/page-aside.component';
 import {PageMarkComponent} from './page/page-mark/page-mark.component';
-import {ConfirmModalComponent} from './modal/dialog/confirm-modal/confirm-modal.component';
-import {InfoModalComponent} from './modal/dialog/info-modal/info-modal.component';
+import {ConfirmModalComponent} from './modal/confirm-modal/confirm-modal.component';
 import {NovaControlsModule} from "../controls";
+import {NotificationParentComponent} from './notification/notification-parent/notification-parent.component';
+import {NotificationComponent} from './notification/notification/notification.component';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import {NovaControlsModule} from "../controls";
     ModalParentComponent,
     ModalHeaderComponent,
     ModalBodyComponent,
+    ConfirmModalComponent,
     // Page
     PageComponent,
     PageHeaderComponent,
@@ -32,8 +34,9 @@ import {NovaControlsModule} from "../controls";
     PageBodyComponent,
     PageAsideComponent,
     PageMarkComponent,
-    ConfirmModalComponent,
-    InfoModalComponent
+    // Notification
+    NotificationParentComponent,
+    NotificationComponent
   ],
   exports: [
     // Modal
@@ -41,13 +44,17 @@ import {NovaControlsModule} from "../controls";
     ModalParentComponent,
     ModalHeaderComponent,
     ModalBodyComponent,
+    ConfirmModalComponent,
     // Page
     PageComponent,
     PageHeaderComponent,
     PageFooterComponent,
     PageBodyComponent,
     PageAsideComponent,
-    PageMarkComponent
+    PageMarkComponent,
+    // Notification
+    NotificationParentComponent,
+    NotificationComponent
   ]
 })
 export class NovaLayoutModule {

@@ -1,20 +1,20 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {InfoModalComponent} from './info-modal.component';
+import {NotificationParentComponent} from './notification-parent.component';
 
-describe('InfoModalComponent', () => {
-  let component: InfoModalComponent;
-  let fixture: ComponentFixture<InfoModalComponent>;
+describe('NotificationParentComponent', () => {
+  let component: NotificationParentComponent;
+  let fixture: ComponentFixture<NotificationParentComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [InfoModalComponent]
+      declarations: [NotificationParentComponent]
     })
       .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InfoModalComponent);
+    fixture = TestBed.createComponent(NotificationParentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

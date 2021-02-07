@@ -24,7 +24,7 @@ $border-width: $cube * 2;
     outline: none;
     box-shadow: none;
     border: $border-width solid transparent;
-    border-radius: $cube * 5;
+    border-radius: $border-radius;
     transition: border-color $transition, color $transition;
 
     padding: $padding-top $padding $padding;
