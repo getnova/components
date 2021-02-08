@@ -1,5 +1,6 @@
 export enum NotificationType {
   INFO,
+  SUCCESS,
   WARNING,
   DANGER
 }

@@ -12,8 +12,13 @@ export class NotificationComponent {
   public notification?: Notification;
 
   @HostBinding('class.info')
-  get success(): boolean {
+  get info(): boolean {
     return this.notification ? this.notification.type === NotificationType.INFO : false;
+  }
+
+  @HostBinding('class.success')
+  get success(): boolean {
+    return this.notification ? this.notification.type === NotificationType.SUCCESS : false;
   }
 
   @HostBinding('class.warning')
