@@ -17,8 +17,10 @@ import {TextFieldErrorDirective} from './text-field/text-field-error.directive';
     TextFieldComponent,
     TextFieldRefDirective,
     TextFieldErrorDirective,
+    // Checkbox
     CheckboxComponent,
     CheckboxRefDirective,
+    // Button
     ButtonComponent,
     ButtonRefDirective
   ],
@@ -27,8 +29,10 @@ import {TextFieldErrorDirective} from './text-field/text-field-error.directive';
     TextFieldComponent,
     TextFieldRefDirective,
     TextFieldErrorDirective,
+    // Checkbox
     CheckboxComponent,
     CheckboxRefDirective,
+    // Button
     ButtonComponent,
     ButtonRefDirective
   ]
