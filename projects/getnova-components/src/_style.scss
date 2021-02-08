@@ -45,3 +45,28 @@ h5 {
 h6 {
   font-size: $title-font-size * 0.5;
 }
+
+a:not(.not) {
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  color: $primary;
+
+  &::after {
+    display: block;
+    content: '';
+    height: $cube * 2;
+    width: 0;
+    background-color: $primary;
+    transition: width $transition;
+    bottom: 0;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+
+  &.active::after {
+    width: 100%;
+  }
+}
