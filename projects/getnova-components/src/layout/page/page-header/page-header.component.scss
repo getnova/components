@@ -3,7 +3,18 @@
 :host {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   background-color: $secondary;
   padding: 0 $cube * 20;
+
+  nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: $cube * 20;
+
+    ::ng-deep a {
+      color: $primary-text-color;
+    }
+  }
 }

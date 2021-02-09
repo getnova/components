@@ -25,6 +25,15 @@ $border-width: $cube * 4;
     transition: width linear 1s;
   }
 
+  &.info {
+    color: red;
+    background-color: $info;
+
+    .line {
+      background-color: $info-dark;
+    }
+  }
+
   &.success {
     background-color: $success;
 

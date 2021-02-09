@@ -19,7 +19,7 @@
     "rxjs": "~6.6.0"
   },
   "dependencies": {
-    "@fontsource/jost": "^4.1.1",
+    "@fontsource/jost": "^4.2.0",
     "tslib": "^2.0.0"
   }
 }
