@@ -210,7 +210,6 @@ jobs:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.0.0
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
           repository-name: ${{ github.repository }}
           branch: gh-pages
           folder: docs
