@@ -98,7 +98,7 @@ jobs:
             npm version --no-git-tag-version ${version:1}
           fi
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: components
           path: dist/getnova-components
@@ -177,7 +177,7 @@ jobs:
 
       - run: npm run build:ci ${{ matrix.project }}
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.project }}
           path: dist/${{ matrix.project }}
